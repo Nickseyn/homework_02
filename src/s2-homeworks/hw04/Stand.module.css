@@ -2,22 +2,27 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 35px;
+    margin: 35px;
 }
 
 .inputs {
     display: flex;
     flex-direction: column;
     gap: 48px;
+    padding-right: 35px;
 }
 
 .buttons {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    padding: 0 35px;
 }
 
 .checkboxes {
     display: flex;
     flex-direction: column;
     gap: 36px;
+    padding-left: 35px;
 }
