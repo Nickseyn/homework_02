@@ -1,9 +1,21 @@
 .select {
+    padding: 8px 12px;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    font-size: 14px;
+    appearance: none;
+    background: url('chevron-down.svg') no-repeat right 12px center;
+    background-size: 16px;
+    cursor: pointer;
+    outline: none;
+    width: 150px;
 }
 
 .select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 2px rgba(0, 123, 255, 0.5);
 }
 
-
 .option:hover {
+    background-color: #f2f2f2;
 }
