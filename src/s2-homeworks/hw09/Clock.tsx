@@ -36,7 +36,7 @@ function Clock() {
     const toStringFooHandler = (num: number) => num.toString().padStart(2, '0')
 
     const stringTime = `${toStringFooHandler(date.getHours())}:${toStringFooHandler(date.getMinutes())}:${toStringFooHandler(date.getSeconds())}`
-    const stringDate = `${toStringFooHandler(date.getDate())}:${toStringFooHandler(date.getMonth() + 1)}:${toStringFooHandler(date.getFullYear())}`
+    const stringDate = `${toStringFooHandler(date.getDate())}.${toStringFooHandler(date.getMonth() + 1)}.${toStringFooHandler(date.getFullYear())}`
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
     const stringDay = new Intl.DateTimeFormat('en-Us', {weekday: 'long'}).format(date)
