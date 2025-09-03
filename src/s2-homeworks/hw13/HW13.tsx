@@ -19,7 +19,7 @@ const HW13 = () => {
     const [text, setText] = useState('')
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
-    const [isloading, setIsloading] = useState<boolean>()
+    const [isloading, setIsloading] = useState<boolean>(false)
 
     const send = (x?: boolean | null) => () => {
         const url =
@@ -31,6 +31,7 @@ const HW13 = () => {
         setImage('')
         setText('')
         setInfo('...loading')
+        setIsloading(true)
 
         axios
             .post(url, {success: x})
