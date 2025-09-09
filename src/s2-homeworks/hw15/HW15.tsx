@@ -48,46 +48,49 @@ const HW15 = () => {
     const [techs, setTechs] = useState<TechType[]>([])
 
     const sendQuery = (params: any) => {
+        console.log("👉 Запрос на сервер:", params)
         setLoading(true)
         getTechs(params)
             .then((res) => {
-                // делает студент
-
-                // сохранить пришедшие данные
-
-                //
+                if (res) {
+                    console.log("✅ Ответ сервера:", res.data)
+                    setTechs(res.data.techs)
+                    setTotalCount(res.data.totalCount)
+                    setLoading(false)
+                }
             })
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
-        // делает студент
-
-        // setPage(
-        // setCount(
-
-        // sendQuery(
-        // setSearchParams(
-
-        //
+        setPage(newPage)
+        setCount(newCount)
+        sendQuery({page: newPage, count: newCount, sort})
+        setSearchParams({page: String(newPage), count: String(newCount), sort})
     }
 
     const onChangeSort = (newSort: string) => {
-        // делает студент
-
-        // setSort(
-        // setPage(1) // при сортировке сбрасывать на 1 страницу
-
-        // sendQuery(
-        // setSearchParams(
-
-        //
+        setSort(newSort)
+        setPage(1)
+        sendQuery({page: 1, count, sort: newSort})
+        setSearchParams({page: '1', count: String(count), sort: newSort})
     }
 
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
-        sendQuery({page: params.page, count: params.count})
-        setPage(+params.page || 1)
-        setCount(+params.count || 4)
+
+        const pageFromParams = Number(params.page) || 1
+        const countFromParams = Number(params.count) || 4
+        const sortFromParams = params.sort || ''
+
+        setPage(pageFromParams)
+        setCount(countFromParams)
+        setSort(sortFromParams)
+
+        sendQuery({
+            page: pageFromParams,
+            count: countFromParams,
+            sort: sortFromParams
+        })
     }, [])
 
     const mappedTechs = techs.map(t => (
